@@ -1,6 +1,6 @@
 <?php 
 	$pageTitle = "Вход";
-	require_once("config.php");
+	//require_once("config.php");
 ?>
 <?php include("./templates/head.php");?>
 <?php include("./templates/header.php");?>

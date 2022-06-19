@@ -1,5 +1,5 @@
 <?php
-
+include "DataBase.php";
 class User{
     
     public $name;
@@ -11,38 +11,50 @@ class User{
         $this->password = $password;
     }
     
+    
+
     public function login(){
         
-        $sql = "SELECT password FROM users WHERE name = :name";
+        $sql = "SELECT password, role FROM users WHERE name = :name";
+
+        $data_base = new DataBase('localhost','d95058y2_db', "root", "root");
+        $db = $data_base->connect();
         
-        // $c = new ConnectDB("localhost", "estore", "root", "");
-        // $db = $c->connect();
-        include "config.php";
         $chk_login = $db->prepare($sql);
         $chk_login->bindValue(":name", $this->name);
         $chk_login->execute();
         $row = $chk_login->fetch(PDO::FETCH_ASSOC);
-        
         if(count($row) > 0){
             $isPassword = password_verify($this->password, $row['password']);
         }
         else {
-            header("Location: index.php");
+            header("Location: sites/error.php");
         }
         
         if(!$isPassword){
-            header("Location: index.php");
-        }else{   
+            header("Location: sites/error.php");
+        }
+
+        if ($isPassword && $row['role'] == 'admin'){   
             $_SESSION['login'] = 'on';
+            $_SESSION['role'] = 'admin';
             $_SESSION['name'] = $this->name;
         
             header("Location: admin.php");
+        } else{
+            $_SESSION['login'] = 'on';
+            $_SESSION['name'] = $this->name;
+        
+            header("Location: index.php");
         }
     }
 
     public function registration(){
         $sql = "SELECT COUNT(name) AS c FROM users WHERE name = :name;";
-        include "config.php";
+        
+        $data_base = new DataBase('localhost','d95058y2_db', "root", "root");
+        $db = $data_base->connect();
+
         $chk_login= $db->prepare($sql);
         $chk_login->bindValue(":name", $this->name);
         $chk_login->execute();

@@ -10,7 +10,7 @@ $(document).ready(function(){
       data:{search:query},
       success:function(data){
         $("#indexMain").html(data);
-        alert(data);
+        
       }
     });
   }
@@ -20,9 +20,9 @@ $(document).ready(function(){
       if(search != ''){
         load_data(search);
       }
-      else{
-        load_data();
-      }
+      // else{
+      //   load_data();
+      // }
 
     });
 

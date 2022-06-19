@@ -25,7 +25,7 @@
 
     
 // }
-
-$db = new PDO('mysql:host=localhost;dbname=estore', "root", "");
+$PATH = "D:\Programs\OpenServer\domains\onlineStore";
+$db = new PDO('mysql:host=localhost;dbname=d95058y2_db', "root", "root");
 session_start();
 ?>

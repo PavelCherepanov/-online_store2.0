@@ -1,5 +1,5 @@
 <div class="col">
-	<div class="card shadow-sm">
+	<div class="card shadow-sm" width="100%" height="500px">
 	<?php if ($product["sale"] != 0){ ?>
 					<div style="color:red;">SALE</div>
 			<?php  } ?>
@@ -9,7 +9,7 @@
 			<?php  } ?>
 			
 		
-		<img class="bd-placeholder-img card-img-top" src="img/products/<?php echo $product['img']; ?>">
+		<img class="bd-placeholder-img card-img-top" src="img/products/<?php echo $product['img']; ?>" width="100%" height="50%">
 		<div class="card-body">
 		
 		<p class="card-text"><a href="product-page.php?productId=<?php echo $product['id']; ?>"><?php echo $product['title']; ?></a></p>

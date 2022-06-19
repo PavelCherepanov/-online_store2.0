@@ -18,7 +18,7 @@
 
     <p><h1><?php echo $product["title"]; ?></h1></p>
     
-    <p style="text-align: center"><img src="img/products/<?php echo $product["img"]; ?>" alt=""></p>
+    <p style="text-align: center"><img src="img/products/<?php echo $product["img"]; ?>" alt="" ></p>
 
     <h3><?php echo $product["price"]; ?> руб<h3>
     <p>

@@ -1,6 +1,6 @@
 <?php
 	require_once("config.php");
-	if (isset($_SESSION['login']) && $_SESSION['login'] == 'on') {
+	if (isset($_SESSION['login']) && $_SESSION['login'] == 'on' ) {
 		
 	}else {
 		header("Location: index.php");
@@ -9,6 +9,11 @@
 	$pageTitle = "Добавить товар";
 ?>
 
+<?php
+
+if ($_SESSION['role'] == 'admin'){
+    
+?>
 <?php include("./templates/head.php");?>
 <?php include("./templates/header.php");?>
 	<div class="container">	
@@ -117,3 +122,10 @@
 
 </div>			
 <?php include("templates/footer.php");?>
+
+<?php
+} else{
+    echo "Вы не админ";
+}
+
+?>

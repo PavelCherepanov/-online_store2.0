@@ -27,7 +27,7 @@ if (isset($_FILES["img"]) && $_FILES["img"]["tmp_name"] != ""){
 	move_uploaded_file($_FILES["img"]["tmp_name"], "./img/products/".$_FILES["img"]["name"]);
 	$fileName = $_FILES["img"]["name"];
 }else {
-	$fileName = "nophoto.jpg";
+	$fileName = "nophoto.png";
 }
 	
     $title = htmlspecialchars($_POST['title']);
@@ -40,12 +40,6 @@ if (isset($_FILES["img"]) && $_FILES["img"]["tmp_name"] != ""){
 
 	$product = new Product();
 	$product->add($title, $price, $description, $fileName, $category, $sale, $new);
-	echo $title;
-	echo $price;
-	echo $description;
-	echo $fileName;
-	echo $category;
-	echo $sale;
-	echo $new;
-// header("Location: admin-success.php");
+	
+ 	// header("Location: admin-success.php");
 ?>
